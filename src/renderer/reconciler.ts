@@ -92,6 +92,11 @@ const hostConfig: ReactReconciler.HostConfig<
 
   shouldSetTextContent: () => false,
   createInstance(type, newProps) {
+    let oncreated = newProps.oncreated;
+    if (oncreated) {
+      delete newProps.oncreated;
+    }
+
     const { initialProps, otherProps } = splitInitialProps(type, newProps);
 
     if (type === 'GenericPanel') type = newProps.type;
@@ -107,6 +112,10 @@ const hostConfig: ReactReconciler.HostConfig<
 
     for (const propName in otherProps) {
       updateProperty(type, panel, propName, undefined, otherProps[propName]);
+    }
+
+    if (oncreated) {
+      oncreated(panel);
     }
 
     return panel;

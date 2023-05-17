@@ -64,6 +64,11 @@ export interface PanelAttributes<T extends PanelBase = Panel> extends ClassAttri
   onscrolledtorightedge?: EventHandler<T>;
   onselect?: EventHandler<T>;
   ondeselect?: EventHandler<T>;
+
+  /**
+   * Note: The 'oncreated' event is fired when panel is created. It is a custom event used to do some initializations.
+   */
+  oncreated?: EventHandler<T>;
 }
 
 interface LabelLikeAttributes<T extends Panel> extends PanelAttributes<T> {
