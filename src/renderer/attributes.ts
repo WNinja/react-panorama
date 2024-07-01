@@ -659,12 +659,12 @@ const panelEventPropertyInfo: PropertyInformation<'Panel', any> = {
     // but we're still using it here as a potential performance optimization
     panel._eventHandlers ??= {};
 
-    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-    if (panel._eventHandlers[propName] === undefined) {
-      panel.SetPanelEvent(propName, () => panel._eventHandlers![propName](panel));
+    panel._eventHandlers[propName] = newValue;
+    if (newValue == undefined) {
+      panel.ClearPanelEvent(propName);
+    } else {
+      panel.SetPanelEvent(propName, () => panel._eventHandlers?.[propName]?.(panel));
     }
-
-    panel._eventHandlers[propName] = newValue !== undefined ? newValue : noop;
   },
 };
 
