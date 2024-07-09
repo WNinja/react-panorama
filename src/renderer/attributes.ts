@@ -85,6 +85,7 @@ const propertiesInformation: {
 
   enabled: { type: PropertyType.SET, name: 'enabled' },
   visible: { type: PropertyType.SET, name: 'visible' },
+  checked: { type: PropertyType.SET, name: 'checked' },
   hittest: { type: PropertyType.SET, name: 'hittest', initial: true, throwOnIncomplete: true },
   hittestchildren: {
     type: PropertyType.SET,
@@ -148,7 +149,6 @@ const propertiesInformation: {
         if (typeof old === 'string') {
           panel.SetDialogVariable(key, `[!s:${key}]`);
         } else if (typeof old === 'number') {
-          // eslint-disable-next-line unicorn/prefer-number-properties
           panel.SetDialogVariableInt(key, NaN);
         } else {
           panel.SetDialogVariableTime(key, PANORAMA_INVALID_DATE);

@@ -18,6 +18,7 @@ export interface PanelAttributes<T extends PanelBase = Panel> extends ClassAttri
   draggable?: boolean;
   enabled?: boolean;
   visible?: boolean;
+  checked?: boolean;
   useglobalcontext?: boolean;
   disallowedstyleflags?: string;
   'never-cache-composition-layer'?: boolean;
@@ -71,7 +72,7 @@ export interface PanelAttributes<T extends PanelBase = Panel> extends ClassAttri
   oncreated?: EventHandler<T>;
 }
 
-interface LabelLikeAttributes<T extends Panel> extends PanelAttributes<T> {
+export interface LabelLikeAttributes<T extends Panel> extends PanelAttributes<T> {
   /**
    * Note: Using this attribute is the same as assigning `text` property on a Label panel - it does
    * not localize strings and ignores dialog variables. If you need the behavior of XML attribute,
